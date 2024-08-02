@@ -68,5 +68,5 @@ def main(youtube_url):
 
 # Example usage
 if __name__ == "__main__":
-    youtube_url = "https://www.youtube.com/watch?v=0HDdjwpPM3Y"  # Replace VIDEO_ID with a valid video ID
+    youtube_url = "https://www.youtube.com/watch?v=u7kdVe8q5zs"  # Replace VIDEO_ID with a valid video ID
     main(youtube_url)
