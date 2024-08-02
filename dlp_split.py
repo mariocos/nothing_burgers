@@ -3,11 +3,12 @@ from yt_dlp import YoutubeDL
 from moviepy.editor import VideoFileClip
 from moviepy.video.fx.all import resize, crop  # Correct import for functions
 
-def download_video(url, output_dir="/home/mario/Downloads/vids_ig"):
+def download_video(url, output_dir="~/Downloads/vids_ig"):
 	if not os.path.exists(output_dir):
 		os.makedirs(output_dir)
 		
 	output_path = os.path.join(output_dir, 'minecraft_parkour_video.mp4')
+	home_directory = os.path.expanduser("~")
 
 	ydl_opts = {
 		'outtmpl': output_path,
@@ -24,7 +25,7 @@ def download_video(url, output_dir="/home/mario/Downloads/vids_ig"):
 		print(f"An error occurred while downloading the video: {e}")
 		return None
 
-def split_video(input_path, segment_length=60, output_dir='/home/mario/Downloads/vids_ig/clips', output_path_template='segment_{:03d}.mp4'):
+def split_video(input_path, segment_length=60, output_dir='~/Downloads/vids_ig/clips', output_path_template='segment_{:03d}.mp4'):
 	video = VideoFileClip(input_path)
 	duration = int(video.duration)
 	segments = []
@@ -49,7 +50,7 @@ def split_video(input_path, segment_length=60, output_dir='/home/mario/Downloads
 	save_segments(segments, output_dir, output_path_template)
 	return segments
 
-def save_segments(segments, output_dir='/home/mario/Downloads/vids_ig/clips', output_path_template='segment_{:03d}.mp4'):
+def save_segments(segments, output_dir='~/Downloads/vids_ig/clips', output_path_template='segment_{:03d}.mp4'):
 	if not os.path.exists(output_dir):
 		os.makedirs(output_dir)
 
