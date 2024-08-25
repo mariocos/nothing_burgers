@@ -1,30 +1,20 @@
-#   |  _  |_ _| |_ ___|     | |_|___ 
-#   |     | | |  _| . |   --| | | . |
-#   |__|__|___|_| |___|_____|_|_|  _|
-#                            |_| 
-#
-# By Abhishta (github.com/abhishtagatya)
-
-# pip install gTTs
-# pip install moviepy
-# pip install rich
-# pip install pyfiglet
-
 import os
 import random
 from typing import List, Tuple
 
 from gtts import gTTS
 from moviepy.editor import (
-	CompositeVideoClip, CompositeAudioClip,
-	VideoFileClip, AudioFileClip, ImageClip, TextClip,
-	concatenate_videoclips, concatenate_audioclips
+    CompositeVideoClip, CompositeAudioClip,
+    VideoFileClip, AudioFileClip, ImageClip, TextClip,
+    concatenate_videoclips, concatenate_audioclips
 )
-import moviepy.video.fx.all as vfx
+from moviepy.config import change_settings
 from rich.console import Console
 from rich.progress import track
 import pyfiglet
 
+# Set ImageMagick path if necessary
+change_settings({"IMAGEMAGICK_BINARY": "/usr/bin/convert"})
 
 def generate_speech(
 		text: str, 
@@ -144,16 +134,12 @@ if __name__ == '__main__':
 	if not os.path.exists("temp_assets"):
 		os.mkdir("temp_assets")
 
-	video_background_file = "<SET YOUR VIDEO FILE>.mp4" # Your video background file
+	video_background_file = "tester.mp4" # Your video background file
 	video_background_offset = random.randint(0, 5000) # Starting Position of Video : 0 for Beginning
-	image_banner_file = "<SET YOUR IMAGE BANNER>.png" # Your image banner file
+	image_banner_file = "oi_oi_closeup.png" # Your image banner file
 	output_file = "AutoClip_Out.mp4" # The output filename
 
-	content = """<YOUR STORY>
-	<RECOMMENDED TO SPLIT PER LINES>
-	<IF YOU WANT TO DISPLAY SUBTITLES IN THIS ORDER>
-	<THANK YOU>
-	"""
+	content = "i am mario and i like reels alot this is true"
 
 	console.print("\n\n[light_green] Task Starting\n\n")
 	clip(content=content, 
